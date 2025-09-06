@@ -1,0 +1,111 @@
+<div class="profile-edit-dialog">
+    <mat-toolbar class="dialog-toolbar" color="primary">
+        <span>Korisnički profil</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="enableEdit()">
+            <mat-icon *ngIf="this.profileForInput.id == this.korisnickiServis.trenutniKorisnik.id">edit</mat-icon>
+        </button>
+        <button mat-icon-button [mat-dialog-close]="true">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-dialog-content class="mat-typography">
+        <mat-card class="profile-card">
+            <mat-card-content>
+                <form fxLayout="column" #ef="ngForm" (ngSubmit)="finishEditing(ef)" fxLayoutGap="20px">
+
+                    <div class="field-row">
+                        <mat-icon>mail</mat-icon>
+                        <div *ngIf="!this.isEditing" class="display-value">
+                            <span class="label">Email:</span>
+                            <span class="value">{{ this.profileForInput.email }}</span>
+                        </div>
+                        <mat-form-field *ngIf="this.isEditing" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" name="email" [(ngModel)]="this.profileForInput.email" email required #emailInput="ngModel">
+                            <mat-error *ngIf="emailInput.hasError('required')">Ovo je obavezno polje.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="field-row" *ngIf="this.isEditing">
+                        <mat-icon>password</mat-icon>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Lozinka</mat-label>
+                            <input matInput type="password" placeholder="Unesite lozinku." ngModel name="sifra" minlength="8" required [(ngModel)]="this.profileForInput.sifra" #sifraInput="ngModel">
+                            <mat-hint align="end">{{ sifraInput.value?.length }} / 8</mat-hint>
+                            <mat-error *ngIf="sifraInput.hasError('required')">Ovo je obavezno polje.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="field-row">
+                        <mat-icon>home</mat-icon>
+                        <div *ngIf="!this.isEditing" class="display-value">
+                            <span class="label">Adresa:</span>
+                            <span class="value">{{ this.profileForInput.adresa }}</span>
+                        </div>
+                        <mat-form-field *ngIf="this.isEditing" appearance="outline">
+                            <mat-label>Adresa</mat-label>
+                            <input matInput type="text" name="adresa" [(ngModel)]="this.profileForInput.adresa" required #adresaInput="ngModel">
+                            <mat-error *ngIf="adresaInput.hasError('required')">Ovo je obavezno polje.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="field-row">
+                        <mat-icon>badge</mat-icon>
+                        <div *ngIf="!this.isEditing" class="display-value">
+                            <span class="label">Ime:</span>
+                            <span class="value">{{ this.profileForInput.ime }}</span>
+                        </div>
+                        <mat-form-field *ngIf="this.isEditing" appearance="outline">
+                            <mat-label>Ime</mat-label>
+                            <input matInput type="text" name="ime" [(ngModel)]="this.profileForInput.ime" required #imeInput="ngModel">
+                            <mat-error *ngIf="imeInput.hasError('required')">Ime je obavezno.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="field-row">
+                        <mat-icon>badge</mat-icon>
+                        <div *ngIf="!this.isEditing" class="display-value">
+                            <span class="label">Prezime:</span>
+                            <span class="value">{{ this.profileForInput.prezime }}</span>
+                        </div>
+                        <mat-form-field *ngIf="this.isEditing" appearance="outline">
+                            <mat-label>Prezime</mat-label>
+                            <input matInput type="text" name="prezime" [(ngModel)]="this.profileForInput.prezime" required #prezimeInput="ngModel">
+                            <mat-error *ngIf="prezimeInput.hasError('required')">Prezime je obavezno.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="field-row">
+                        <mat-icon>call</mat-icon>
+                        <div *ngIf="!this.isEditing" class="display-value">
+                            <span class="label">Telefon:</span>
+                            <span class="value">{{ this.profileForInput.telefon }}</span>
+                        </div>
+                        <mat-form-field *ngIf="this.isEditing" appearance="outline">
+                            <mat-label>Broj telefona</mat-label>
+                            <input matInput type="number" name="telefon" [(ngModel)]="this.profileForInput.telefon" required #telefonInput="ngModel">
+                            <mat-error *ngIf="telefonInput.hasError('required')">Broj telefona je obavezan.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="field-row">
+                        <mat-icon>grade</mat-icon>
+                        <div *ngIf="!this.isEditing" class="display-value">
+                            <span class="label">Omiljeni predmet:</span>
+                            <span class="value">{{ this.profileForInput.oPredmet }}</span>
+                        </div>
+                        <mat-form-field *ngIf="this.isEditing" appearance="outline">
+                            <mat-label>Omiljeni predmet</mat-label>
+                            <input matInput type="text" name="oPredmet" [(ngModel)]="this.profileForInput.oPredmet" required #oPredmetInput="ngModel">
+                            <mat-error *ngIf="oPredmetInput.hasError('required')">Ovo polje je obavezno.</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-raised-button color="primary" *ngIf="this.isEditing" type="submit" [disabled]="ef.invalid">Sačuvaj izmene</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-dialog-content>
+</div>

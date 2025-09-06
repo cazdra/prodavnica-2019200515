@@ -1,0 +1,71 @@
+<mat-card *ngIf="korpa.items.length">
+
+<mat-table [dataSource]="dataSource" matSort >
+
+  
+    <ng-container matColumnDef="slika">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">
+            <img src="{{ proizvod.slika }}">
+        </mat-cell>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="naziv">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv proizvoda</mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">{{ proizvod.naziv }}</mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="velicina">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Veličina</mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">{{ proizvod.velicina }}</mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="kolicina">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Kolicina</mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">
+            <button mat-icon-button (click)="onRemoveQuantity(proizvod)">
+                <mat-icon>remove</mat-icon>
+            </button>
+            <span>{{ proizvod.kolicina }}</span>
+            <button mat-icon-button (click)="onAddQuantity(proizvod)">
+                <mat-icon>add</mat-icon>
+            </button>
+
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cena">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cena</mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">{{ proizvod.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
+    </ng-container> 
+    <ng-container matColumnDef="ukupno">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ukupan Iznos</mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">{{ proizvod.kolicina * proizvod.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <button mat-raised-button color="primary" (click)="onClearCart()">Ocisti korpu</button></mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">
+            <button mat-raised-button color="primary" (click)="onRemoveFromCart(proizvod)"><mat-icon>close</mat-icon></button> 
+        </mat-cell>
+       
+    </ng-container>  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let rows; columns: displayedColumns"></mat-row>
+</mat-table>
+
+</mat-card>
+<div fxLayoutAlign="center end"  *ngIf="korpa.items.length" fxLayoutGap="60px">
+    <button mat-raised-button color="primary" routerLink="/prodavnica">Vratite se na kupovinu</button>
+  
+    <button mat-raised-button color="primary">Ukupan iznos {{ getTotal(korpa.items) | currency:'RSD: ':true:"1.0-2"
+    }}</button>
+</div>
+<mat-card fxLayoutAlign="center center" *ngIf="!korpa.items.length">
+  <p>
+    Korpa je prazna
+    <button mat-raised-button color="primary" routerLink="/prodavnica">Vratite se na kupovinu</button>
+</p>
+</mat-card>

@@ -1,0 +1,64 @@
+.profile-edit-dialog {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.dialog-toolbar {
+    background-color: #512da8;
+    color: white;
+    height: 64px;
+    padding: 0 24px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dialog-toolbar .spacer {
+    flex: 1 1 auto;
+}
+
+.profile-card {
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card mat-card-content {
+    padding: 20px;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.field-row mat-icon {
+    color: #757575;
+}
+
+.display-value {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    width: 100%;
+}
+
+.display-value .label {
+    font-weight: 500;
+    color: #555;
+    white-space: nowrap;
+}
+
+.display-value .value {
+    color: #333;
+    text-align: left;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+}

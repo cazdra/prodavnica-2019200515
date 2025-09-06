@@ -1,0 +1,31 @@
+<div class="login-page">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Prijavite se</mat-card-title>
+      <mat-card-subtitle>Unesite Vaš email i lozinku</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form fxLayout="column" fxLayoutAlign="start center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="20px">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Unesite email" ngModel name="email" #emailInput="ngModel" required>
+          <mat-icon matPrefix>email</mat-icon>
+          <mat-error *ngIf="emailInput.hasError('required')">Polje ne sme da bude prazno.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Lozinka</mat-label>
+          <input type="password" matInput placeholder="Unesite lozinku" ngModel name="password" required minlength="8" #passInput="ngModel">
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-hint align="end">{{ passInput.value?.length }} / 8</mat-hint>
+        </mat-form-field>
+        
+        <div class="form-actions">
+          <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Prijavi se</button>
+          <mat-label *ngIf="errorExists" class="error-message">{{errorText}}</mat-label>
+          <a routerLink="/signup">Nemate nalog? Registrujte se.</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

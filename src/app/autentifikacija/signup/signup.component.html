@@ -1,0 +1,61 @@
+<div class="signup-page">
+    <mat-card class="signup-card">
+        <mat-card-header>
+            <mat-card-title>Registracija korisnika</mat-card-title>
+            <mat-card-subtitle>Kreirajte Vaš nalog</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form fxLayout="column" fxLayoutAlign="start center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="20px">
+                <mat-form-field appearance="outline">
+                    <mat-label>Ime</mat-label>
+                    <input type="text" matInput placeholder="Unesite Vaše ime" ngModel name="ime" #imeInput="ngModel" required>
+                    <mat-icon matPrefix>person</mat-icon>
+                    <mat-error *ngIf="imeInput.hasError('required')">Polje ne sme da bude prazno.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Prezime</mat-label>
+                    <input type="text" matInput placeholder="Unesite Vaše prezime" ngModel name="prezime" #prezimeInput="ngModel" required>
+                    <mat-icon matPrefix>person</mat-icon>
+                    <mat-error *ngIf="prezimeInput.hasError('required')">Polje ne sme da bude prazno.</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Unesite Vaš email" ngModel name="email" #emailInput="ngModel" required>
+                    <mat-icon matPrefix>email</mat-icon>
+                    <mat-error *ngIf="emailInput.hasError('required')">Polje ne sme da bude prazno.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Lozinka</mat-label>
+                    <input type="password" matInput placeholder="Unesite lozinku" ngModel name="sifra" required minlength="8" #sifraInput="ngModel">
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <mat-hint align="end">{{ sifraInput.value?.length }} / 8</mat-hint>
+                    <mat-error *ngIf="sifraInput.hasError('required')">Polje ne sme da bude prazno.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Datum rođenja</mat-label>
+                    <input 
+                        matInput 
+                        placeholder="Datum rođenja" 
+                        [matDatepicker]="picker" 
+                        ngModel 
+                        name="birthDate" 
+                        required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-checkbox color="primary" ngModel name="acceptance" required>Prihvatam uslove korišćenja.</mat-checkbox>
+                
+                <div class="form-actions">
+                    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Registruj se</button>
+                    <mat-label *ngIf="errorExists" class="error-message">{{errorText}}</mat-label>
+                    <a routerLink="/login">Vrati se nazad na prijavu.</a>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

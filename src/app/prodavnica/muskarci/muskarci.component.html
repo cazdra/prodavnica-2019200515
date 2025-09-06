@@ -1,0 +1,33 @@
+<div fxLayoutAlign="center center" >
+    <mat-grid-list cols="5" rowHeight= "450px" class="custom-grid-list" gutterSize="20px" >
+        <mat-grid-tile *ngFor="let proizvod of proizvod.slice(0, 15)" >
+            <mat-card class="product-card">
+                <div class="product-image-wrapper">
+                    <img [src]= "proizvod.slika" alt="Slika proizvoda">
+                </div>
+                <mat-card-header class="product-header">
+                    <mat-card-title>{{ proizvod.naziv }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="product-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Vrsta:</span>
+                        <span class="detail-value">{{ proizvod.vrsta }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Veličina:</span>
+                        <span class="detail-value">{{ proizvod.velicina }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Proizvođač:</span>
+                        <span class="detail-value">{{ proizvod.proizvodjac}}</span>
+                    </div>
+                    <div class="add-to-cart-container">
+                        <button mat-raised-button color="primary" class="add-to-cart-button" (click)="onAddToCart(proizvod)">
+                            <span>Dodaj u korpu: {{ proizvod.cena | number:'1.0-2' }} RSD</span>
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
