@@ -47,7 +47,6 @@
                         <mat-form-field *ngIf="this.isEditing" appearance="outline">
                             <mat-label>Adresa</mat-label>
                             <input matInput type="text" name="adresa" [(ngModel)]="this.profileForInput.adresa" required #adresaInput="ngModel">
-                            <mat-error *ngIf="adresaInput.hasError('required')">Ovo je obavezno polje.</mat-error>
                         </mat-form-field>
                     </div>
 
@@ -93,13 +92,12 @@
                     <div class="field-row">
                         <mat-icon>grade</mat-icon>
                         <div *ngIf="!this.isEditing" class="display-value">
-                            <span class="label">Omiljena životinja:</span>
+                            <span class="label">Omiljeni ljubimac:</span>
                             <span class="value">{{ this.profileForInput.oZivotinja }}</span>
                         </div>
                         <mat-form-field *ngIf="this.isEditing" appearance="outline">
                             <mat-label>Omiljena životinja</mat-label>
                             <input matInput type="text" name="oZivotinja" [(ngModel)]="this.profileForInput.oZivotinja" required #oZivotinjaInput="ngModel">
-                            <mat-error *ngIf="oZivotinjaInput.hasError('required')">Ovo polje je obavezno.</mat-error>
                         </mat-form-field>
                     </div>
 
