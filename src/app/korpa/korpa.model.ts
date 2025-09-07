@@ -5,11 +5,12 @@ export interface Korpa {
   export interface KorpaProizvod {
     id: number;
     slika: string;
-    naziv: string;
-    vrsta: string;
-    velicina: "S" | "M" | "L" | "XL" | "XXL" | null;
-    proizvodjac: string;
+    ime: string;
+    rasa: string;
+    velicina: "Small" | "Medium" | "Large";
+    godiste: string;
     cena: number;
     status?: "Pristigao" | "U toku"| "Otkazano" | null;
+    ocena?: number | null;
     kolicina: number;
   }

@@ -15,9 +15,11 @@ import { KorpaComponent } from './korpa/korpa.component';
 import { ProfilComponent } from './autentifikacija/profil/profil.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProdavnicaComponent } from './prodavnica/prodavnica.component';
-import { MuskarciComponent } from './prodavnica/muskarci/muskarci.component';
-import { ZeneComponent } from './prodavnica/zene/zene.component';
+import { PsiComponent } from './prodavnica/psi/psi.component';
+import { MackeComponent } from './prodavnica/macke/macke.component';
 import { KorpaService } from './korpa/korpa.service';
+import { ProizvodDetaljiComponent } from './proizvod-detalji/proizvod-detalji.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
 
@@ -31,8 +33,10 @@ import { KorpaService } from './korpa/korpa.service';
     ProfilComponent,
     WelcomeComponent,
     ProdavnicaComponent,
-    MuskarciComponent,
-    ZeneComponent,
+    PsiComponent,
+    MackeComponent,
+    ProizvodDetaljiComponent,
+    ChatbotComponent,
     
   ],
   imports: [

@@ -1,53 +1,61 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list (click)="sidenav.close()">
-      <a mat-list-item routerLink="/prodavnica">
-        <mat-icon>shopping_bag</mat-icon>
-        <span>Prodavnica</span>
-      </a>
-      <a mat-list-item routerLink="/korpa">
-        <mat-icon>shopping_cart</mat-icon>
-        <span>Korpa</span>
-      </a>
-      <a mat-list-item routerLink="/profil" (click)="openProfile(korisnickiServis.trenutniKorisnik.id)">
-        <mat-icon>person</mat-icon>
-        <span>Profil</span>
-      </a>
-      <a mat-list-item routerLink="/login">
-        <mat-icon>lock_open</mat-icon>
-        <span>Prijavi se</span>
-      </a>
-      <a mat-list-item routerLink="/welcome">
-        <mat-icon>close</mat-icon>
-        <span>Odjavi se</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
+    <mat-sidenav #sidenav>
+        <mat-nav-list (click)="sidenav.close()">
+            <a mat-list-item routerLink="/prodavnica">
+                <mat-icon>shopping_bag</mat-icon>
+                <span>Prodavnica</span>
+            </a>
+            <a mat-list-item routerLink="/korpa">
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Korpa</span>
+            </a>
+            <a mat-list-item routerLink="/profil" (click)="openProfile(korisnickiServis.trenutniKorisnik.id)">
+                <mat-icon>person</mat-icon>
+                <span>Profil</span>
+            </a>
+            <a mat-list-item routerLink="/login">
+                <mat-icon>lock_open</mat-icon>
+                <span>Prijavi se</span>
+            </a>
+            <a mat-list-item routerLink="/welcome">
+                <mat-icon>close</mat-icon>
+                <span>Odjavi se</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
 
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
 
-      <div class="logo-container">
-        <a routerLink="/welcome">
-          <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30142254/125.png" alt="logo">
-        </a>
-      </div>
-
-      <div class="toolbar-actions">
-        <button mat-button (click)="openProfile(korisnickiServis.trenutniKorisnik.id)">
-          <mat-icon>person</mat-icon>
-          Profil
+            <button mat-icon-button (click)="toggleChatbot()">
+            <mat-icon>chat_bubble_outline</mat-icon>
         </button>
-        <button mat-icon-button routerLink="/korpa">
-          <mat-icon>shopping_cart</mat-icon>
-        </button>
-      </div>
-    </mat-toolbar>
 
-    <router-outlet></router-outlet>
-    <span class="footer-text">Zdravko Andan 2019200515</span>
-  </mat-sidenav-content>
+            <div class="logo-container">
+                <a routerLink="/welcome">
+                    <img src="https://www.logoground.com/uploads9/dv9y2021394972021-04-0133740761.jpg" alt="logo">
+                </a>
+            </div>
+
+            <span class="spacer"></span>
+
+            <div class="toolbar-actions">
+                <button mat-button (click)="openProfile(korisnickiServis.trenutniKorisnik.id)">
+                    <mat-icon>person</mat-icon>
+                    Profil
+                </button>
+                <button mat-icon-button routerLink="/korpa">
+                    <mat-icon>shopping_cart</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+
+         <app-chatbot *ngIf="isChatbotVisible"></app-chatbot>
+
+        <router-outlet></router-outlet>
+        <span class="footer-text">Zdravko Andan 2019200515</span>
+    </mat-sidenav-content>
 </mat-sidenav-container>

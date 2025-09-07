@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZeneComponent } from './zene.component';
+import { MackeComponent } from './macke.component';
 
-describe('ZeneComponent', () => {
-  let component: ZeneComponent;
-  let fixture: ComponentFixture<ZeneComponent>;
+describe('MackeComponent', () => {
+  let component: MackeComponent;
+  let fixture: ComponentFixture<MackeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ZeneComponent]
+      declarations: [MackeComponent]
     });
-    fixture = TestBed.createComponent(ZeneComponent);
+    fixture = TestBed.createComponent(MackeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

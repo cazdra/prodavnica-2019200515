@@ -4,27 +4,46 @@ mat-sidenav {
   height: 100%;
 }
 
-mat-toolbar {
+.mat-toolbar {
   height: 90px;
   background-color: #121212;
   color: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding: 0 16px;
+}
+
+.search-container {
+  margin-right: auto;
+  margin-left: 20px
+}
+
+.search-field {
+  width: 250px;
 }
 
 .logo-container {
-  flex-grow: 1;
-  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .logo-container img {
-  height: 100px;
+  height: 80px;
   width: auto;
+}
+
+.toolbar-actions {
+  margin-left: auto;
 }
 
 .toolbar-actions button {
   margin-left: 10px;
+}
+
+.spacer {
+  flex-grow: 1;
 }
 
 mat-sidenav {
@@ -50,8 +69,8 @@ mat-nav-list a span {
 }
 
 .footer-text {
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 60px;
   right: 10px;
   color: #000000;
   font-size: 0.8rem;

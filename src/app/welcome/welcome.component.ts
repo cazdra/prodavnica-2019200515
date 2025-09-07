@@ -21,10 +21,10 @@ export class WelcomeComponent {
     this.korpaService.addToCart({
      id: proizvod.id,
      slika: proizvod.slika,
-     naziv: proizvod.naziv,
-     vrsta: proizvod.vrsta,
+     ime: proizvod.ime,
+     rasa: proizvod.rasa,
+     godiste: proizvod.godiste,
      velicina: proizvod.velicina,
-     proizvodjac: proizvod.proizvodjac,
      cena: proizvod.cena,
      kolicina: 1
     });

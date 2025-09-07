@@ -1,342 +1,253 @@
+// src/app/welcome/prodavnica.service.ts
+
 import { Injectable } from "@angular/core";
 import { Proizvod } from "./proizvod.model";
 
 @Injectable()
 export class ProdavnicaServis {
-        private proizvod: Proizvod[]=[
-
-{
-    id: 1,
-    naziv: "Jakna",
-    slika: "https://rs.beosport.com/media/catalog/product/cache/62e035a19ec38f27c8237d0c2b219b9a/M/5/M5011212A_NWI-01_1_1.jpg",
-    vrsta: "Jakna",
-    velicina: "S",
-    proizvodjac: "SuperDRY",
-    cena: 9999,
-    kolicina: 1
-},
-{
-    id: 2,
-    slika: "https://www.sparrow-world.rs/image/cache/catalog/proizvodi/1005/1500x1500-MAJICA-POLO-MUSKA-tamno-siva-(1)-1000x1000.jpg",
-    naziv: "Muska majica",
-    vrsta: "Majica",
-    velicina: "M",
-    proizvodjac: "Sparrow",
-    cena: 1000,
-    kolicina: 1
-},
-{
-    id: 3,
-    slika: "https://www.n-sport.net/UserFiles/products/big/02/23/muska-majica-calvin-klein-seasonal-monogram-t-shirt-J30J320806-0GK.jpg",
-    naziv: "Muska majica",
-    vrsta: "Majica",
-    velicina: "M",
-    proizvodjac: "Calven Klein",
-    kolicina: 1,
-    cena: 2500
-},
-
-{
-    id: 4,
-    slika: "https://www.movem.rs/images/products/HB50530640-404-1.jpg",
-    naziv: "Muske Pantalone",
-    vrsta: "Pantalone",
-    velicina: "M",
-    proizvodjac: "Don Denim",
-    cena: 4320,
-    kolicina: 1
-},
-
-{
-    id: 5,
-    slika: "https://atriumfashion.rs/wp-content/uploads/2024/03/pantalone-2.jpg",
-    naziv: "Muske pantalone",
-    vrsta: "Pantalone",
-    velicina: "L",
-    proizvodjac: "Elegant For You",
-    cena: 7770,
-    kolicina: 1
-},
-{
-    id: 6,
-    slika: "https://www.maxairsoft.com/getimage/products/5908218768352a.jpg",
-    naziv: "Kratke pantalone",
-    vrsta: "Pantalone",
-    velicina: "S",
-    proizvodjac: "Casual Wear",
-    cena: 5110,
-    kolicina: 1
-},
-
-{
-    id: 7,
-    slika: "https://www.armyshop.rs/wp-content/uploads/2022/09/dzemper-commando-2.jpeg",
-     naziv: "Muski Džemper", 
-    vrsta: "Džemperi", 
-    velicina: "L", 
-    proizvodjac: "Fashion World", 
-    kolicina: 1,
-    cena: 5410 
-},
-
-{
-    id: 8,
-    slika: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81dXZzuGGuZP3IzxbBsWHfVPC3TB9nOK_Tg&s",
-    naziv: "Čarape",
-    vrsta: "Aksesoari",
-    velicina: "M",
-    proizvodjac: "Adidas",
-    cena: 870,
-    kolicina: 1
-  },
-
-  {
-    id: 9,
-    slika: "https://www.n-sport.net/UserFiles/products/big/08/08/muske-farmerke-calvin-klein-slim-taper-J30J325889-1A4.jpg",
-    naziv: "Muske Farmerke",
-    vrsta: "Pantalone",
-    velicina: "L",
-    proizvodjac: "Calvine Klein",
-    kolicina: 1,
-    cena: 4350
-    
-  },
-
-  {
-    id: 10,
-    slika: "https://extremejeans-beograd.rs/wp-content/uploads/2022/04/Teksas-jakna.jpg",
-    naziv: "Muska Teksas jakna",
-    vrsta: "Jakna",
-    velicina: "L",
-    proizvodjac: "DenimCraft",
-    cena: 8510,
-    kolicina: 1
-  },
-  {
-    id: 11,
-    slika: "https://www.movem.rs/images/products/HB50529723-001-1.jpg",
-    naziv: "Muski Kaput",
-    vrsta: "Jakna",
-    velicina: "M",
-    proizvodjac: "OnSTyle",
-    cena: 6965,
-    kolicina: 1
-
-  },
-  {
-    id: 12,
-    slika: "https://www.koznejaknelaforce.rs/wp-content/uploads/2024/04/1LAFORCE_000148-Kozna-jakna-Boris-Crna-1.jpg",
-    naziv: "Muska kozna jakna",
-    vrsta: "Jakna",
-    velicina: "L",
-    proizvodjac: "La Force",
-    cena: 9999,
-    kolicina: 1
-
-  },
-  
-  {
-    id: 13,
-    slika: "https://www.sunrise.rs/wp-content/uploads/2020/12/ACA_9133.jpg",
-    naziv: "Majica dugih rukava",
-    vrsta: "Majica",
-    velicina: "M",
-    proizvodjac: "SweatStyle",
-    cena: 1435,
-    kolicina: 1
-
-  },
-
-  {
-    id: 14,
-    slika: "https://www.safetyshop.rs/media/catalog/product/cache/a011ec81d47f9fbb787b543ed0d4661c/a/l/al-od-004-svetlo-plava.jpg",
-    naziv: "Muska Polo majica",
-    vrsta: "Majica",
-    velicina: "XL",
-    proizvodjac: "PoloStyle",
-    kolicina: 1,
-    cena: 2990
-  },
-  {
-    id: 15,
-    slika: "https://www.n-sport.net/UserFiles/products/big/02/21/muska-trenerka-puma-individualrise-tracksuit-657534-03.jpg",
-    naziv: "Muska Trenerka",
-    vrsta: "Komplet",
-    velicina: "L",
-    proizvodjac: "Puma",
-    cena: 5000,
-    kolicina: 1
-
-  },
-  {
-    id: 16,
-    naziv: "Zenska majica",
-    slika: "https://www.sparrow-world.rs/image/cache/catalog/proizvodi/1004/1500x1500-MAJICA-S-P-ZENSKA-pink-1000x1000.jpg",
-    vrsta: "Majica",
-    velicina: "M",
-    proizvodjac: "Sparrow World",
-    cena: 2100,
-    kolicina: 1
-},
-{
-    id: 17,
-    slika: "https://vp.lacuna.rs/wand/Content/slike/tsrlcmfgm.jpg?width=700&height=700&scale=both&mode=pad- ",
-    naziv: "Zenska majica",
-    vrsta: "Majica",
-    velicina: "M",
-    proizvodjac: "Hugo Boss",
-    cena: 800,
-    kolicina: 1
-
-},
-{
-    id: 18,
-    slika: "https://cameleon.rs/wp-content/uploads/2022/12/Zenska-bluza-J1BL3597-1.jpg",
-    naziv: "Bluza",
-    vrsta: "Majica",
-    velicina: "L",
-    proizvodjac: "Polo",
-    kolicina: 1,
-    cena: 1300,
-},
-
-{
-    id: 19,
-    slika: "https://cdn.ddgfashion.rs/w/643/h/857/media/ddgrs_products/40766/14079446_Black_All_over_print2.jpeg",
-    naziv: "Zenske pantalone",
-    vrsta: "Pantalone",
-    velicina: "M",
-    proizvodjac: "Denim Experts",
-    kolicina: 1,
-    cena: 2720
-},
-
-{
-    id: 20,
-    slika: "https://shooter.rs/images/product/large2/0uo--ZS-18260-02-TEGET.jpg",
-    naziv: "Suknja",
-    vrsta: "Suknje",
-    velicina: "L",
-    proizvodjac: "Elegant Styles",
-    cena: 2500,
-    kolicina: 1
-
-},
-{
-    id: 21,
-    slika: "https://www.n-sport.net/UserFiles/products/big/05/10/zenski-sorc-marx-BRIAJ804129-BJ.jpg",
-    naziv: "Kratke pantalone",
-    vrsta: "Pantalone",
-    velicina: "S",
-    proizvodjac: "Casual Wear",
-    kolicina: 1,
-    cena: 1430
-},
-
-{
-    id: 22,
-    slika: "https://pullover.rs/image/cache/catalog/zisuki%20kopcanje/Zenski-dzemper-drap-1653-500x666.jpg",
-     naziv: "Zenski Džemper", 
-    vrsta: "Džemperi", 
-    velicina: "XL", 
-    proizvodjac: "Fashion World", 
-    kolicina: 1,
-    cena: 3330 
-},
-
-{
-    id: 23,
-    slika: "https://www.sparrow-world.rs/image/cache/wp/gj/proizvodi/1002/1500x1500-MAJICA-S-P-ZENSKA-tirkiz-2000x2000.webp",
-    naziv: "Zenska majica",
-    vrsta: "Majica",
-    velicina: "L",
-    proizvodjac: "SockMasters",
-    cena: 500,
-    kolicina: 1
-
-  },
-
-  {
-    id: 24,
-    slika: "https://www.avangardia.rs/files/thumbs/files/images/slike_proizvoda/thumbs_800/764795-200460-Ligth-Blue-Denim_800_1120px.jpg.webp",
-    naziv: "Zenske Farmerke",
-    vrsta: "Pantalone",
-    velicina: "L",
-    proizvodjac: "Jeans Unlimited",
-    kolicina: 1,
-    cena: 2800
-  },
-
-  {
-    id: 25,
-    slika: "https://www.stim-shop.com/wp-content/uploads/2020/05/%C5%BDenska-majica-dugih-rukava-pepeljaste-boje.jpg",
-    naziv: "Majica dugih rukava",
-    vrsta: "Majica",
-    velicina: "M",
-    proizvodjac: "SweatStyle",
-    cena: 2490,
-    kolicina: 1
-    ,
-  },
-
-  {
-    id: 26,
-    slika: "https://www.avangardia.rs/files/thumbs/files/images/slike_proizvoda/thumbs_800/768684-200453-Black-Mix_800_1120px.jpg.webp",
-    naziv: "Zenski Kaput",
-    vrsta: "Jakna",
-    velicina: "M",
-    proizvodjac: "StyleMasters",
-    cena: 9490,
-    kolicina: 1
-
-  },
-  {
-    id: 27,
-    slika: "https://www.movem.rs/images/products/HB50524624-001-1.jpg",
-    naziv: "Zenska jakna",
-    vrsta: "Jakna",
-    velicina: "L",
-    proizvodjac: "Hugo Boss",
-    cena: 9999,
-    kolicina: 1
-  },
-  {
-    id: 28,
-    slika: "https://www.armyshop.rs/wp-content/uploads/2022/09/britt1.png",
-    naziv: "Zimska zenska jakna",
-    vrsta: "Jakna",
-    velicina: "L",
-    proizvodjac: "Army Shop",
-    cena: 7000,
-    kolicina: 1
-
-  },
-  {
-    id: 29,
-    slika: "https://www.n-sport.net/UserFiles/products/big/04/03/zenska-majica-replay-3698P23608P-066.jpg",
-    naziv: "Zenska majica",
-    vrsta: "Majica",
-    velicina: "XL",
-    proizvodjac: "Replay",
-    cena: 3200,
-    kolicina: 1
-
-  },
-  {
-    id: 30,
-    slika: "https://www.sparrow-world.rs/image/cache/catalog/proizvodi/3002/1500x1500-TRENERKA-NORMAL-ZENSKA-cigla-1000x1000.jpg",
-    naziv: "Zenska Trenerka",
-    vrsta: "Pantalone",
-    velicina: "L",
-    proizvodjac: "SportWear",
-    cena: 1980,
-    kolicina: 1
-
-  },
-
-
-]
+    private proizvod: Proizvod[] = [
+        {
+            id: 1,
+            ime: "Bobi",
+            slika: "https://moj-ljubimac.rs/wp-content/uploads/2021/09/Maltezer-sedi.jpg",
+            rasa: "Maltezer",
+            velicina: "Small",
+            godiste: "03.07.2025",
+            cena: 25000,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Maltezeri su poznati po svojoj beloj, svilenkastoj dlaci i razigranom karakteru. Veoma su druželjubivi i savršeni za porodično okruženje. Životni vek im je između 12 i 15 godina."
+        },
+        {
+            id: 2,
+            slika: "https://www.woefkesranch.be/wp-content/uploads/2023/02/Maltipoo-reu-2018-1-1.jpg.webp",
+            ime: "Beni",
+            rasa: "Malti pu",
+            godiste: "12.08.2025",
+            velicina: "Small",
+            cena: 47000,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Malti pu je mešanac maltezera i pudle, poznat po hipoalergenskoj dlaci. Inteligentan je, nežan i lako se dresira. Životni vek im je između 10 i 13 godina."
+        },
+        {
+            id: 3,
+            slika: "https://img.goglasi.com/img/284354184",
+            ime: "Nala",
+            rasa: "Pit bull",
+            velicina: "Large",
+            godiste: "18.08.2025",
+            kolicina: 1,
+            rod: "Ženka",
+            cena: 22000,
+            opis: "Pit bulovi su snažni i odani psi, puni energije. Uz pravilnu socijalizaciju, postaju izuzetno nežni i zaštitnički nastrojeni. Životni vek im je između 8 i 15 godina."
+        },
+        {
+            id: 4,
+            slika: "https://www.kupujemprodajem.com/photos/oglasi/0/93/150751930/150751930_651e7389a3c3d4-03302097image.webp",
+            ime: "Nea",
+            rasa: "Staford",
+            velicina: "Large",
+            godiste: "14.07.2025",
+            cena: 20000,
+            rod: "Ženka",
+            kolicina: 1,
+            opis: "Američki Stafordski Terijeri su inteligentni i hrabri psi. Izuzetno su privrženi svojim vlasnicima i dobri su sa decom. Životni vek im je između 12 i 16 godina."
+        },
+        {
+            id: 5,
+            slika: "https://img.halooglasi.com/slike/oglasi/Thumbs/231120/m/bernski-pastirski-pas-stene-5425643904869-71806385800.jpg",
+            ime: "Koko",
+            rasa: "Bernski planinski",
+            velicina: "Large",
+            godiste: "22.06.2025",
+            cena: 32000,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Bernski planinski psi su dobroćudni, mirni i strpljivi. Smatraju se savršenim porodičnim ljubimcima zbog svoje blage naravi. Životni vek im je između 7 i 10 godina."
+        },
+        {
+            id: 6,
+            slika: "https://img.halooglasi.com/slike/oglasi/Thumbs/240703/m/kovrdzavi-bison-stene-5425644598251-71808733500.jpg",
+            ime: "Moli",
+            rasa: "Bišon",
+            velicina: "Small",
+            godiste: "22.08.2025",
+            cena: 36000,
+            rod: "Ženka",
+            kolicina: 1,
+            opis: "Bišoni su veseli i razigrani psi, poznati po svojoj beloj, kovrdžavoj dlaci. Savršeni su za život u stanu i veoma su privrženi. Životni vek im je između 12 i 15 godina."
+        },
+        {
+            id: 7,
+            slika: "https://www.oglasnik.hr/repository/images/_var/2/9/297041e4eaa257392a1d979842d00ac0ba062d12-GalleryBig.jpg",
+            ime: "Bono",
+            rasa: "Chau Chau",
+            velicina: "Large",
+            godiste: "12.06.2025",
+            kolicina: 1,
+            rod: "Mužjak",
+            cena: 47500,
+            opis: "Chau Chau je pas snažne građe, poznat po karakterističnom plavom jeziku. Nezavisni su i lojalni, ali traže čvrstu dresuru. Životni vek im je između 9 i 15 godina."
+        },
+        {
+            id: 8,
+            slika: "https://res.cloudinary.com/wuuff/image/private/h_225,w_275,c_fill,g_center,q_auto,f_auto/duappfacyyxzvlznsfwm.webp",
+            ime: "Megi",
+            rasa: "Jazavičar",
+            velicina: "Medium",
+            godiste: "01.09.2025",
+            cena: 19000,
+            rod: "Ženka",
+            kolicina: 1,
+            opis: "Jazavičari su mali psi sa velikom ličnošću. Poznati su po svojoj radoznalosti i hrabrosti, a njihov duguljast oblik tela ih čini jedinstvenim. Životni vek im je između 12 i 16 godina."
+        },
+        {
+            id: 9,
+            slika: "https://mypets.rs/wp-content/uploads/2024/04/2-civava-VB0424.jpg",
+            ime: "Ken",
+            rasa: "Čivava",
+            velicina: "Small",
+            godiste: "22.05.2025",
+            kolicina: 1,
+            rod: "Mužjak",
+            cena: 54000,
+            opis: "Čivave su najmanji psi na svetu. Energične su, odvažne i izuzetno privržene svojim vlasnicima, idealne za život u stanu. Životni vek im je između 12 i 20 godina."
+        },
+        {
+            id: 10,
+            slika: "https://img.halooglasi.com/slike/oglasi/Thumbs/241014/m/velski-korgi-pembrok-stene-5425644880171-71809699622.jpg",
+            ime: "Laki",
+            rasa: "Korgi",
+            velicina: "Medium",
+            godiste: "01.07.2025",
+            cena: 79000,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Korgiji su poznati po svojoj inteligenciji, snažnom karakteru i kratkim nogama. Lako se dresiraju i odlični su porodični psi. Životni vek im je između 12 i 15 godina."
+        },
+        {
+            id: 11,
+            slika: "https://www.zooplus.hr/magazin/wp-content/uploads/2022/09/macic-americke-kratkodlake-macke.webp",
+            ime: "Mila",
+            rasa: "Americka Kratkodlaka",
+            velicina: "Medium",
+            godiste: "12.06.2025",
+            cena: 22700,
+            rod: "Ženka",
+            kolicina: 1,
+            opis: "Američke kratkodlake mačke su mirne i lako se prilagođavaju životu u zatvorenom prostoru. Druželjubive su i uživaju u igri. Životni vek im je između 15 i 20 godina."
+        },
+        {
+            id: 12,
+            slika: "https://img.halooglasi.com/slike/oglasi/Thumbs/240528/m/maine-coon-mace-5425644495733-71808367334.jpg",
+            ime: "Zox",
+            rasa: "Maine Coon",
+            velicina: "Large",
+            godiste: "02.09.2025",
+            cena: 92000,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Maine Coon su velike, nežne mačke sa gustim krznom. Poznate su po inteligenciji i razigranosti, idealne za život sa porodicom. Životni vek im je između 12 i 15 godina."
+        },
+        {
+            id: 13,
+            slika: "https://uraditozasebe.rs/wp-content/uploads/2023/09/sekta-33-1024x599.jpg",
+            ime: "Nuri",
+            rasa: "Egipatski mau",
+            velicina: "Small",
+            godiste: "11.08.2025",
+            cena: 43200,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Egipatski mau su mačke sa prelepim pegavim krznom. Aktivne su, znatiželjne i vole igru, a imaju i blagu narav. Životni vek im je između 9 i 13 godina."
+        },
+        {
+            id: 14,
+            slika: "https://puntomarinero.com/images/turkish-angora-character-care-and_4.jpg",
+            ime: "Sani",
+            rasa: "Turska Angora",
+            velicina: "Medium",
+            godiste: "09.08.2025",
+            kolicina: 1,
+            rod: "Ženka",
+            cena: 92000,
+            opis: "Turske Angore su elegantne mačke sa svilenkastom dlakom. Razigrane su, inteligentne i veoma privržene svojim vlasnicima. Životni vek im je između 12 i 18 godina."
+        },
+        {
+            id: 15,
+            slika: "https://mojljubimac.info/wp-content/uploads/2019/01/cute-3252251_1280.jpg",
+            ime: "Lili",
+            rasa: "Sijamska",
+            velicina: "Medium",
+            godiste: "22.05.2025",
+            cena: 27000,
+            rod: "Ženka",
+            kolicina: 1,
+            opis: "Sijamske mačke su poznate po svojoj inteligenciji, društvenosti i specifičnom mjaukanju. Veoma su aktivne i vole da su u centru pažnje. Životni vek im je između 14 i 20 godina."
+        },
+        {
+            id: 16,
+            ime: "Kajk",
+            slika: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXd4XEn5VybLa5jLmyHMN8Q_mrMem03_bhFg&s",
+            rasa: "Sfinks",
+            velicina: "Small",
+            godiste: "19.07.2025",
+            cena: 67000,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Sfinks mačke su prepoznatljive po odsustvu krzna. One su nežne, inteligentne i izuzetno privržene, idealne za one koji žele jedinstvenog ljubimca. Životni vek im je između 6 i 9 godina."
+        },
+        {
+            id: 17,
+            slika: "https://www.purina.rs/sites/default/files/styles/ttt_image_510/public/2021-02/CAT%20BREED%20Hero%20Mobile_0012_Russian_blue.jpg?itok=HogqLOd0",
+            ime: "Jan",
+            rasa: "Ruska plava",
+            velicina: "Medium",
+            godiste: "01.07.2025",
+            cena: 39300,
+            rod: "Mužjak",
+            kolicina: 1,
+            opis: "Ruske plave mačke su mirne i tihe, poznate po elegantnoj sivoj dlaci. Veoma su lojalne i nežne prema svojim vlasnicima. Životni vek im je između 9 i 20 godina."
+        },
+        {
+            id: 18,
+            slika: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsmw7lHXUbvIWpGLy_tXoFeX3hXpxF7PqGqQ&s",
+            ime: "Blun",
+            rasa: "Himalajska",
+            velicina: "Large",
+            godiste: "30.06.2025",
+            kolicina: 1,
+            rod: "Mužjak",
+            cena: 84000,
+            opis: "Himalajske mačke su mešavina persijskih i sijamskih, sa dugim krznom i prelepim plavim očima. Mirne su i nežne, idealne za život u zatvorenom. Životni vek im je između 9 i 15 godina."
+        },
+        {
+            id: 19,
+            slika: "https://www.njuskalo.hr/image-xlsize/udomljavanje-macaka/balineska-macka-muzjak-slika-177176659.jpg",
+            ime: "Loko",
+            rasa: "Balineska",
+            velicina: "Medium",
+            godiste: "31.08.2025",
+            kolicina: 1,
+            rod: "Mužjak",
+            cena: 79000,
+            opis: "Balineske mačke su inteligentne i elegantne. Poznate su po svojoj komunikativnosti i razigranosti, slične sijamskim mačkama. Životni vek im je između 15 i 20 godina."
+        },
+        {
+            id: 20,
+            slika: "https://mezimci.rs/images/races/persijska.jpg",
+            ime: "Neo",
+            rasa: "Persijska",
+            velicina: "Medium",
+            godiste: "31.06.2025",
+            rod: "Mužjak",
+            cena: 46000,
+            kolicina: 1,
+            opis: "Persijske mačke su poznate po svom dugom krznu i mirnoj naravi. Vole da se maze i savršene su za miran porodični život. Životni vek im je između 12 i 15 godina."
+        }
+    ];
     getProizvod() {
-    return this.proizvod;
-}
+        return this.proizvod;
+    }
 }

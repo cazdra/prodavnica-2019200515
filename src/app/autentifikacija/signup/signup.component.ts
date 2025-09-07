@@ -18,7 +18,7 @@ export class SignupComponent {
   onSubmit(form : NgForm){
     if (!this. korisnickiServis.getKorisnik(form.value.email)) {
       this.errorExists = false;
-      var newUser = this. korisnickiServis.registerKorisnik (form.value.ime, form.value.prezime, form.value.email, form.value.sifra, form.value.adresa, form.value.telefon, form.value.oPredmet);
+      var newUser = this. korisnickiServis.registerKorisnik (form.value.ime, form.value.prezime, form.value.email, form.value.sifra, form.value.adresa, form.value.telefon, form.value.oZivotinja);
       this.router.navigate(['']);
     } else {
       this.errorExists = true;

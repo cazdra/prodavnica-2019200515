@@ -6,6 +6,7 @@ import { LoginComponent } from "./autentifikacija/login/login.component";
 import { KorpaComponent } from "./korpa/korpa.component";
 import { ProfilComponent } from "./autentifikacija/profil/profil.component";
 import { ProdavnicaComponent } from "./prodavnica/prodavnica.component";
+import { ProizvodDetaljiComponent } from "./proizvod-detalji/proizvod-detalji.component";
 
 const rute: Routes = [
     { path: 'welcome', component: WelcomeComponent },
@@ -14,6 +15,7 @@ const rute: Routes = [
     { path: 'korpa', component: KorpaComponent},
     { path: 'profil', component: ProfilComponent},
     { path: 'prodavnica', component: ProdavnicaComponent},
+    { path: 'detalji/:id', component: ProizvodDetaljiComponent }
 ];
 
 @NgModule({
@@ -25,4 +27,4 @@ const rute: Routes = [
     ]
 })
 
-export class RoutingModule {} 
+export class RoutingModule {}

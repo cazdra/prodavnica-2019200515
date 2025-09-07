@@ -4,11 +4,11 @@ import { ProdavnicaServis } from 'src/app/welcome/prodavnica.service';
 import { Proizvod } from 'src/app/welcome/proizvod.model';
 
 @Component({
-  selector: 'app-zene',
-  templateUrl: './zene.component.html',
-  styleUrls: ['./zene.component.css']
+  selector: 'app-macke',
+  templateUrl: './macke.component.html',
+  styleUrls: ['./macke.component.css']
 })
-export class ZeneComponent {
+export class MackeComponent {
   
   proizvod: Proizvod[] = [];
   
@@ -22,10 +22,10 @@ export class ZeneComponent {
     this.korpaService.addToCart({
      id: proizvod.id,
      slika: proizvod.slika,
-     naziv: proizvod.naziv,
-     vrsta: proizvod.vrsta,
+     ime: proizvod.ime,
+     rasa: proizvod.rasa,
      velicina: proizvod.velicina,
-     proizvodjac: proizvod.proizvodjac,
+     godiste: proizvod.godiste,
      cena: proizvod.cena,
      kolicina: 1
     });

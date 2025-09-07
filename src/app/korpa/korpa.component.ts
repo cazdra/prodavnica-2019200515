@@ -1,35 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Korpa, KorpaProizvod } from './korpa.model';
 import { KorpaService } from './korpa.service';
-import { Subscription } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-korpa',
   templateUrl: './korpa.component.html',
   styleUrls: ['./korpa.component.css']
 })
-export class KorpaComponent {
+export class KorpaComponent implements OnInit {
 
-  korpa : Korpa = { items: [
-  ]};
-  dataSource: Array<KorpaProizvod> = [];
-  cartSubscription: Subscription | undefined;
-  displayedColumns: Array<string> = [
+  korpa: Korpa = { items: [] };
+  dataSource = new MatTableDataSource<KorpaProizvod>();
+
+  displayedColumns: string[] = [
     'slika',
-    'naziv',
+    'rasa',
     'velicina',
     'kolicina',
     'cena',
     'ukupno',
-    'action',
-  ]
+    'status', 
+    'action'
+  ];
 
-  constructor(private korpaService: KorpaService) {}
-  
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private korpaService: KorpaService, private _snackBar: MatSnackBar) { }
+
   ngOnInit(): void {
-    this.cartSubscription = this.korpaService.korpa.subscribe((_cart: Korpa) => {
-      this.korpa = _cart;
-      this.dataSource = _cart.items;
+    this.korpaService.korpa.subscribe((_korpa) => {
+      this.korpa = _korpa;
+      this.dataSource.data = this.korpa.items;
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -37,21 +42,19 @@ export class KorpaComponent {
     return this.korpaService.getTotal(items);
   }
 
-  onAddQuantity(item: KorpaProizvod): void {
-    this.korpaService.addToCart(item);
-  }
-
-  onRemoveFromCart(item: KorpaProizvod): void {
-    this.korpaService.removeFromCart(item);
-  }
-
-  onRemoveQuantity(item: KorpaProizvod): void {
-    this.korpaService.removeQuantity(item);
-  }
-
   onClearCart(): void {
     this.korpaService.clearCart();
   }
 
+  oceniPorudzbinu(porudzbina: KorpaProizvod, ocena: number): void {
+    this.korpaService.markItem(porudzbina.id, ocena);
+  }
 
+  obrisiPorudzbinu(porudzbina: KorpaProizvod): void {
+    this.korpaService.deleteItem(porudzbina);
+  }
+  
+  promeniStatus(id: number, noviStatus: 'Pristigao' | 'U toku' | 'Otkazano'): void {
+    this.korpaService.changeStatus(id, noviStatus);
+  }
 }

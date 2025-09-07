@@ -1,71 +1,93 @@
 <mat-card *ngIf="korpa.items.length">
 
-<mat-table [dataSource]="dataSource" matSort >
+    <mat-table [dataSource]="dataSource" matSort>
 
-  
-    <ng-container matColumnDef="slika">
+      <ng-container matColumnDef="slika">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
         <mat-cell *matCellDef="let proizvod">
-            <img src="{{ proizvod.slika }}">
+          <img [src]="proizvod.slika">
         </mat-cell>
-    </ng-container>
-
+      </ng-container>
   
-    <ng-container matColumnDef="naziv">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv proizvoda</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">{{ proizvod.naziv }}</mat-cell>
-    </ng-container>
-
-   
-    <ng-container matColumnDef="velicina">
+      <ng-container matColumnDef="rasa">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Rasa:</mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">{{ proizvod.rasa }}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="velicina">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Veličina</mat-header-cell>
         <mat-cell *matCellDef="let proizvod">{{ proizvod.velicina }}</mat-cell>
-    </ng-container>
-
-   
-    <ng-container matColumnDef="kolicina">
+      </ng-container>
+  
+      <ng-container matColumnDef="kolicina">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Kolicina</mat-header-cell>
         <mat-cell *matCellDef="let proizvod">
-            <button mat-icon-button (click)="onRemoveQuantity(proizvod)">
-                <mat-icon>remove</mat-icon>
-            </button>
-            <span>{{ proizvod.kolicina }}</span>
-            <button mat-icon-button (click)="onAddQuantity(proizvod)">
-                <mat-icon>add</mat-icon>
-            </button>
-
+          <span>{{ proizvod.kolicina }}</span>
         </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="cena">
+      </ng-container>
+  
+      <ng-container matColumnDef="cena">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Cena</mat-header-cell>
         <mat-cell *matCellDef="let proizvod">{{ proizvod.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
-    </ng-container> 
-    <ng-container matColumnDef="ukupno">
+      </ng-container>
+      
+      <ng-container matColumnDef="ukupno">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Ukupan Iznos</mat-header-cell>
         <mat-cell *matCellDef="let proizvod">{{ proizvod.kolicina * proizvod.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> <button mat-raised-button color="primary" (click)="onClearCart()">Ocisti korpu</button></mat-header-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
         <mat-cell *matCellDef="let proizvod">
-            <button mat-raised-button color="primary" (click)="onRemoveFromCart(proizvod)"><mat-icon>close</mat-icon></button> 
+          <span [ngClass]="{'status-pristigao': proizvod.status === 'Pristigao', 'status-u-toku': proizvod.status === 'U toku', 'status-otkazano': proizvod.status === 'Otkazano'}">{{ proizvod.status }}</span>
         </mat-cell>
-       
-    </ng-container>  
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let rows; columns: displayedColumns"></mat-row>
-</mat-table>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let proizvod">
+            
+            <button mat-raised-button color="primary" (click)="promeniStatus(proizvod.id, 'Pristigao')" 
+                *ngIf="proizvod.status === 'U toku'">
+                <mat-icon>check_circle_outline</mat-icon> Pristigao
+            </button>
+            
+            <button mat-raised-button color="warn" (click)="promeniStatus(proizvod.id, 'Otkazano')" 
+                *ngIf="proizvod.status === 'U toku'">
+                <mat-icon>cancel</mat-icon> Otkaži
+            </button>
+
+            <div class="ocena-container" *ngIf="proizvod.status === 'Pristigao'">
+                <mat-icon 
+                    *ngFor="let ocena of [1, 2, 3, 4, 5]" 
+                    [ngClass]="{'ocenjena-zvezdica': proizvod.ocena !== null && ocena <= proizvod.ocena}"
+                    (click)="oceniPorudzbinu(proizvod, ocena)">
+                    star
+                </mat-icon>
+            </div>
+
+            <button mat-raised-button color="warn" (click)="obrisiPorudzbinu(proizvod)" 
+                *ngIf="proizvod.status === 'Pristigao' || proizvod.status === 'Otkazano'">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+        </mat-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let rows; columns: displayedColumns"></mat-row>
+    </mat-table>
 
 </mat-card>
-<div fxLayoutAlign="center end"  *ngIf="korpa.items.length" fxLayoutGap="60px">
-    <button mat-raised-button color="primary" routerLink="/prodavnica">Vratite se na kupovinu</button>
-  
-    <button mat-raised-button color="primary">Ukupan iznos {{ getTotal(korpa.items) | currency:'RSD: ':true:"1.0-2"
-    }}</button>
+
+<div fxLayoutAlign="center end" *ngIf="korpa.items.length" fxLayoutGap="60px">
+  <button mat-raised-button color="primary" routerLink="/prodavnica">Vratite se na kupovinu</button>
+  <button mat-raised-button color="primary">Ukupan iznos {{ getTotal(korpa.items) | currency:'RSD: ':true:"1.0-2" }}</button>
 </div>
+
 <mat-card fxLayoutAlign="center center" *ngIf="!korpa.items.length">
   <p>
     Korpa je prazna
     <button mat-raised-button color="primary" routerLink="/prodavnica">Vratite se na kupovinu</button>
-</p>
+  </p>
 </mat-card>

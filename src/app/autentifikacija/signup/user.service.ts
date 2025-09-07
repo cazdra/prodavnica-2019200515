@@ -8,7 +8,7 @@ export interface Korisnik {
     sifra: string;
     telefon: string;
     adresa: string;
-    oPredmet: string;
+    oZivotinja: string;
 }
 
 @Injectable()
@@ -26,7 +26,7 @@ export class KorisnickiServis {
             sifra: 'petrovic12345',
             telefon: "123456125",
             adresa: "Steve Todorovica 32",
-            oPredmet: "Majice",
+            oZivotinja: "Pas",
         },
         {
             id: 2,
@@ -36,7 +36,7 @@ export class KorisnickiServis {
             sifra: "nikolic12345",
             telefon: "12345678",
             adresa: "Terazijska 4",
-            oPredmet: "Trenerke",
+            oZivotinja: "Macka",
         },
         {
             id: 3,
@@ -46,7 +46,7 @@ export class KorisnickiServis {
             sifra: "markovic12345",
             telefon: "124256366",
             adresa: "Strumicka BB",
-            oPredmet: "Sorcevi",
+            oZivotinja: "Pas",
         },
         {
             id: 4,
@@ -56,7 +56,7 @@ export class KorisnickiServis {
             sifra: "stefanovic12345",
             telefon: "333444777",
             adresa: "nemanjina 50",
-            oPredmet: "Carape",
+            oZivotinja: "Pas",
         },
         {
             id: 5,
@@ -66,7 +66,7 @@ export class KorisnickiServis {
             sifra: "jovanoci12345",
             telefon: "44567789",
             adresa: "Ustanicka 60A",
-            oPredmet: "Suknje",
+            oZivotinja: "Macka",
         },
         {
             id: 6,
@@ -76,7 +76,7 @@ export class KorisnickiServis {
             sifra: "jovanovic12345",
             telefon: "123456789",
             adresa: "Visnjicka 25",
-            oPredmet: "Dzemperi",
+            oZivotinja: "Macka",
         },
         {
             id: 7,
@@ -86,7 +86,7 @@ export class KorisnickiServis {
             sifra: "popovic12345",
             telefon: "345678960",
             adresa: "Braca Jerkovic 4",
-            oPredmet: "string",
+            oZivotinja: "Macka",
         },
         {
             id: 8,
@@ -96,7 +96,7 @@ export class KorisnickiServis {
             sifra: "ana12345",
             telefon: "551256613",
             adresa: "Gospodara Vucica 1",
-            oPredmet: "Helanke",
+            oZivotinja: "Pas",
         },
         {
             id: 9,
@@ -106,7 +106,7 @@ export class KorisnickiServis {
             sifra: "milic12345",
             telefon: "123765098",
             adresa: "Vojvodjanska 37",
-            oPredmet: "Suknje",
+            oZivotinja: "Macka",
         },
         {
             id: 10,
@@ -116,7 +116,7 @@ export class KorisnickiServis {
             sifra: "singidunum1",
             telefon: "0631645343",
             adresa: "",
-            oPredmet: "Jakne",
+            oZivotinja: "Pas",
         },
       ];
 
@@ -143,7 +143,7 @@ export class KorisnickiServis {
             return KorisnickiServis.dummyKorisnikList.find(korisnikToFind => (korisnikToFind.email == korisnikEmail && korisnikToFind.sifra == sifra)) != undefined;
         }
     
-        registerKorisnik(ime:string, prezime:string, email: string, sifra: string,  adresa:string, telefon:string, oPredmet: string): Korisnik {
+        registerKorisnik(ime:string, prezime:string, email: string, sifra: string,  adresa:string, telefon:string, oZivotinja: string): Korisnik {
             var maxId: number = 0;
             KorisnickiServis.dummyKorisnikList.forEach(korisnik => {
                 if (maxId < korisnik.id) {
@@ -152,7 +152,7 @@ export class KorisnickiServis {
             });
     
             var id = ++maxId;
-            var korisnik: Korisnik = { id, ime, prezime, email, sifra, adresa, telefon, oPredmet  };
+            var korisnik: Korisnik = { id, ime, prezime, email, sifra, adresa, telefon, oZivotinja  };
     
             KorisnickiServis.dummyKorisnikList.push(korisnik);
     

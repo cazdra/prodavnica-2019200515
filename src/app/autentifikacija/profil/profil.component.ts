@@ -23,7 +23,7 @@ ngOnInit(): void{
     ime:      this.data.korisnik.ime,
     prezime:  this.data.korisnik.prezime,
     telefon:  this.data.korisnik.telefon,
-    oPredmet: this.data.korisnik.oPredmet
+    oZivotinja: this.data.korisnik.oZivotinja
     
   };
 }
@@ -35,7 +35,7 @@ finishEditing(form: NgForm){
   this.data.korisnik.ime  = this.profileForInput.ime;
   this.data.korisnik.prezime  = this.profileForInput.prezime;
   this.data.korisnik.telefon  = this.profileForInput.telefon;
-  this.data.korisnik.oPredmet  = this.profileForInput.oPredmet;
+  this.data.korisnik.oZivotinja  = this.profileForInput.oZivotinja;
 
   this.isEditing = false;
 

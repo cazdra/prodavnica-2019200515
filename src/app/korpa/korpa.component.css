@@ -6,3 +6,27 @@ img {
     width: 150px;
     height: 150px;
 }
+
+.status-pristigao {
+  color: green;
+  font-weight: bold;
+}
+
+.status-u-toku {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-otkazano {
+  color: red;
+  font-weight: bold;
+}
+
+.ocena-container mat-icon {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.ocenjena-zvezdica {
+  color: gold !important;
+}
