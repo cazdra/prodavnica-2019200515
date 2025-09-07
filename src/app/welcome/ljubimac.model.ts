@@ -1,6 +1,4 @@
-
-
-export interface Proizvod {
+export interface Ljubimac {
 
     id: number;
     slika: string;

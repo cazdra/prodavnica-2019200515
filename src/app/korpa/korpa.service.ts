@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Korpa, KorpaProizvod } from "./korpa.model";
+import { Korpa, KorpaLjubimac } from "./korpa.model";
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+//
 
 @Injectable()
 
@@ -13,7 +15,7 @@ export class KorpaService {
 
     constructor(private _snackBar: MatSnackBar) {}
 
-    addToCart(item: KorpaProizvod): void {
+    addToCart(item: KorpaLjubimac): void {
         const items = [...this.korpa.value.items];
         const itemInCart = items.find((_item) => _item.id === item.id);
 
@@ -21,7 +23,7 @@ export class KorpaService {
             itemInCart.kolicina += 1;
             this._snackBar.open('Količina ljubimca je ažurirana.', 'OK', { duration: 2500 });
         } else {
-            const newItem: KorpaProizvod = { ...item, status: 'U toku', kolicina: 1, ocena: null };
+            const newItem: KorpaLjubimac = { ...item, status: 'U toku', kolicina: 1, ocena: null };
             items.push(newItem);
             this._snackBar.open('Ljubimac je dodat u korpu.', 'OK', { duration: 2500 });
         }
@@ -29,7 +31,7 @@ export class KorpaService {
         this.korpa.next({ items });
     }
 
-    deleteItem(item: KorpaProizvod): boolean {
+    deleteItem(item: KorpaLjubimac): boolean {
         if (item.status !== 'Pristigao' && item.status !== 'Otkazano') {
             this._snackBar.open('Ne možete obrisati porudžbinu koja je u toku.', 'Zatvori', { duration: 2500 });
             return false;
@@ -69,7 +71,7 @@ export class KorpaService {
         }
     }
 
-    removeFromCart(id: number): KorpaProizvod[] {
+    removeFromCart(id: number): KorpaLjubimac[] {
       const filteredItems = this.korpa.value.items.filter(
         (_item) => _item.id !== id
       );
@@ -82,7 +84,7 @@ export class KorpaService {
         this._snackBar.open('Korpa je ispraznjena', 'OK', { duration: 2500 });
     }
 
-    getTotal(items: KorpaProizvod[]): number {
+    getTotal(items: KorpaLjubimac[]): number {
         return items
             .map((item) => item.cena * (item.kolicina || 1))
             .reduce((prev, current) => prev + current, 0);

@@ -5,6 +5,8 @@ import { ProfilComponent } from './autentifikacija/profil/profil.component';
 import { KorpaService } from './korpa/korpa.service';
 import { Korpa } from './korpa/korpa.model';
 
+//
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

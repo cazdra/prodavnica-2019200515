@@ -18,11 +18,11 @@ import { ProdavnicaComponent } from './prodavnica/prodavnica.component';
 import { PsiComponent } from './prodavnica/psi/psi.component';
 import { MackeComponent } from './prodavnica/macke/macke.component';
 import { KorpaService } from './korpa/korpa.service';
-import { ProizvodDetaljiComponent } from './proizvod-detalji/proizvod-detalji.component';
+import { LjubimciDetaljiComponent } from './ljubimci-detalji/ljubimci-detalji.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
-
+//
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     ProdavnicaComponent,
     PsiComponent,
     MackeComponent,
-    ProizvodDetaljiComponent,
+    LjubimciDetaljiComponent,
     ChatbotComponent,
     
   ],

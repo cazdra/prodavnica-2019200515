@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { KorpaService } from 'src/app/korpa/korpa.service';
 import { ProdavnicaServis } from 'src/app/welcome/prodavnica.service';
-import { Proizvod } from 'src/app/welcome/proizvod.model';
+import { Ljubimac } from 'src/app/welcome/ljubimac.model';
+
+//
 
 @Component({
   selector: 'app-macke',
@@ -10,23 +12,23 @@ import { Proizvod } from 'src/app/welcome/proizvod.model';
 })
 export class MackeComponent {
   
-  proizvod: Proizvod[] = [];
+  ljubimac: Ljubimac[] = [];
   
   constructor(private prodavnicaService: ProdavnicaServis, private korpaService: KorpaService) {}
  
 
   ngOnInit(): void {
-    this.proizvod = this.prodavnicaService.getProizvod();
+    this.ljubimac = this.prodavnicaService.getLjubimac();
   }
-  onAddToCart(proizvod: Proizvod): void{
+  onAddToCart(ljubimac: Ljubimac): void{
     this.korpaService.addToCart({
-     id: proizvod.id,
-     slika: proizvod.slika,
-     ime: proizvod.ime,
-     rasa: proizvod.rasa,
-     velicina: proizvod.velicina,
-     godiste: proizvod.godiste,
-     cena: proizvod.cena,
+     id: ljubimac.id,
+     slika: ljubimac.slika,
+     ime: ljubimac.ime,
+     rasa: ljubimac.rasa,
+     velicina: ljubimac.velicina,
+     godiste: ljubimac.godiste,
+     cena: ljubimac.cena,
      kolicina: 1
     });
  }

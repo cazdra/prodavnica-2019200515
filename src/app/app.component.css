@@ -7,7 +7,7 @@ mat-sidenav {
 .mat-toolbar {
   height: 90px;
   background-color: #121212;
-  color: white;
+  color: rgb(242, 242, 242);
   display: flex;
   align-items: center;
   position: relative;

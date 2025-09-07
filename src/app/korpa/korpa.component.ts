@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Korpa, KorpaProizvod } from './korpa.model';
+import { Korpa, KorpaLjubimac } from './korpa.model';
 import { KorpaService } from './korpa.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+//
 
 @Component({
   selector: 'app-korpa',
@@ -13,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class KorpaComponent implements OnInit {
 
   korpa: Korpa = { items: [] };
-  dataSource = new MatTableDataSource<KorpaProizvod>();
+  dataSource = new MatTableDataSource<KorpaLjubimac>();
 
   displayedColumns: string[] = [
     'slika',
@@ -38,7 +40,7 @@ export class KorpaComponent implements OnInit {
     });
   }
 
-  getTotal(items: KorpaProizvod[]): number {
+  getTotal(items: KorpaLjubimac[]): number {
     return this.korpaService.getTotal(items);
   }
 
@@ -46,11 +48,11 @@ export class KorpaComponent implements OnInit {
     this.korpaService.clearCart();
   }
 
-  oceniPorudzbinu(porudzbina: KorpaProizvod, ocena: number): void {
+  oceniPorudzbinu(porudzbina: KorpaLjubimac, ocena: number): void {
     this.korpaService.markItem(porudzbina.id, ocena);
   }
 
-  obrisiPorudzbinu(porudzbina: KorpaProizvod): void {
+  obrisiPorudzbinu(porudzbina: KorpaLjubimac): void {
     this.korpaService.deleteItem(porudzbina);
   }
   

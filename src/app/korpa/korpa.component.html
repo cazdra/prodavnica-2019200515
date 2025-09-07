@@ -4,70 +4,70 @@
 
       <ng-container matColumnDef="slika">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">
-          <img [src]="proizvod.slika">
+        <mat-cell *matCellDef="let ljubimac">
+          <img [src]="ljubimac.slika">
         </mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="rasa">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Rasa:</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">{{ proizvod.rasa }}</mat-cell>
+        <mat-cell *matCellDef="let ljubimac">{{ ljubimac.rasa }}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="velicina">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Veličina</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">{{ proizvod.velicina }}</mat-cell>
+        <mat-cell *matCellDef="let ljubimac">{{ ljubimac.velicina }}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="kolicina">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Kolicina</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">
-          <span>{{ proizvod.kolicina }}</span>
+        <mat-cell *matCellDef="let ljubimac">
+          <span>{{ ljubimac.kolicina }}</span>
         </mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="cena">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Cena</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">{{ proizvod.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
+        <mat-cell *matCellDef="let ljubimac">{{ ljubimac.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
       </ng-container>
       
       <ng-container matColumnDef="ukupno">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Ukupan Iznos</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">{{ proizvod.kolicina * proizvod.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
+        <mat-cell *matCellDef="let ljubimac">{{ ljubimac.kolicina * ljubimac.cena | currency:'RSD: ':true:"1.0-2" }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">
-          <span [ngClass]="{'status-pristigao': proizvod.status === 'Pristigao', 'status-u-toku': proizvod.status === 'U toku', 'status-otkazano': proizvod.status === 'Otkazano'}">{{ proizvod.status }}</span>
+        <mat-cell *matCellDef="let ljubimac">
+          <span [ngClass]="{'status-pristigao': ljubimac.status === 'Pristigao', 'status-u-toku': ljubimac.status === 'U toku', 'status-otkazano': ljubimac.status === 'Otkazano'}">{{ ljubimac.status }}</span>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let proizvod">
+        <mat-cell *matCellDef="let ljubimac">
             
-            <button mat-raised-button color="primary" (click)="promeniStatus(proizvod.id, 'Pristigao')" 
-                *ngIf="proizvod.status === 'U toku'">
+            <button mat-raised-button color="primary" (click)="promeniStatus(ljubimac.id, 'Pristigao')" 
+                *ngIf="ljubimac.status === 'U toku'">
                 <mat-icon>check_circle_outline</mat-icon> Pristigao
             </button>
             
-            <button mat-raised-button color="warn" (click)="promeniStatus(proizvod.id, 'Otkazano')" 
-                *ngIf="proizvod.status === 'U toku'">
+            <button mat-raised-button color="warn" (click)="promeniStatus(ljubimac.id, 'Otkazano')" 
+                *ngIf="ljubimac.status === 'U toku'">
                 <mat-icon>cancel</mat-icon> Otkaži
             </button>
 
-            <div class="ocena-container" *ngIf="proizvod.status === 'Pristigao'">
+            <div class="ocena-container" *ngIf="ljubimac.status === 'Pristigao'">
                 <mat-icon 
                     *ngFor="let ocena of [1, 2, 3, 4, 5]" 
-                    [ngClass]="{'ocenjena-zvezdica': proizvod.ocena !== null && ocena <= proizvod.ocena}"
-                    (click)="oceniPorudzbinu(proizvod, ocena)">
+                    [ngClass]="{'ocenjena-zvezdica': ljubimac.ocena !== null && ocena <= ljubimac.ocena}"
+                    (click)="oceniPorudzbinu(ljubimac, ocena)">
                     star
                 </mat-icon>
             </div>
 
-            <button mat-raised-button color="warn" (click)="obrisiPorudzbinu(proizvod)" 
-                *ngIf="proizvod.status === 'Pristigao' || proizvod.status === 'Otkazano'">
+            <button mat-raised-button color="warn" (click)="obrisiPorudzbinu(ljubimac)" 
+                *ngIf="ljubimac.status === 'Pristigao' || ljubimac.status === 'Otkazano'">
                 <mat-icon>delete</mat-icon>
             </button>
 
@@ -91,3 +91,6 @@
     <button mat-raised-button color="primary" routerLink="/prodavnica">Vratite se na kupovinu</button>
   </p>
 </mat-card>
+
+
+

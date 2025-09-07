@@ -1,5 +1,3 @@
-// src/app/chatbot/chatbot.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ChatbotService } from '../chatbot.service';
 import { Observable } from 'rxjs';

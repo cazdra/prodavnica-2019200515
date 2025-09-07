@@ -24,7 +24,7 @@ export class KorisnickiServis {
             prezime: "Petrovic",
             email: "petarpetrovic@gmail.com",
             sifra: 'petrovic12345',
-            telefon: "123456125",
+            telefon: "123456122",
             adresa: "Steve Todorovica 32",
             oZivotinja: "Pas",
         },

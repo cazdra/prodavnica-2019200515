@@ -1,8 +1,8 @@
 export interface Korpa {
-    items: Array<KorpaProizvod>;
+    items: Array<KorpaLjubimac>;
   }
   
-  export interface KorpaProizvod {
+  export interface KorpaLjubimac {
     id: number;
     slika: string;
     ime: string;
@@ -14,3 +14,6 @@ export interface Korpa {
     ocena?: number | null;
     kolicina: number;
   }
+
+
+

@@ -6,7 +6,9 @@ import { LoginComponent } from "./autentifikacija/login/login.component";
 import { KorpaComponent } from "./korpa/korpa.component";
 import { ProfilComponent } from "./autentifikacija/profil/profil.component";
 import { ProdavnicaComponent } from "./prodavnica/prodavnica.component";
-import { ProizvodDetaljiComponent } from "./proizvod-detalji/proizvod-detalji.component";
+import { LjubimciDetaljiComponent } from "./ljubimci-detalji/ljubimci-detalji.component";
+
+//
 
 const rute: Routes = [
     { path: 'welcome', component: WelcomeComponent },
@@ -15,7 +17,7 @@ const rute: Routes = [
     { path: 'korpa', component: KorpaComponent},
     { path: 'profil', component: ProfilComponent},
     { path: 'prodavnica', component: ProdavnicaComponent},
-    { path: 'detalji/:id', component: ProizvodDetaljiComponent }
+    { path: 'detalji/:id', component: LjubimciDetaljiComponent }
 ];
 
 @NgModule({

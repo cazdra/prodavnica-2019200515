@@ -1,0 +1,25 @@
+<div class="detalji-container" *ngIf="ljubimac">
+  <mat-card class="ljubimac-card">
+    <img mat-card-image [src]="ljubimac.slika" [alt]="ljubimac.ime">
+
+    <mat-card-content>
+      <h2>{{ ljubimac.ime }}</h2>
+      <p><strong>Rasa:</strong> {{ ljubimac.rasa }}</p>
+      <p><strong>Veličina:</strong> {{ ljubimac.velicina }}</p>
+      <p><strong>Godište:</strong> {{ ljubimac.godiste }}</p>
+      <p><strong>Rod:</strong> {{ ljubimac.rod }}</p>
+      <p><strong>Cena:</strong> {{ ljubimac.cena }} RSD</p>
+      <p><strong>Opis:</strong> {{ ljubimac.opis }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="add-to-cart-button" (click)="onAddToCart(ljubimac)">
+        Dodaj u korpu.
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div *ngIf="!ljubimac">
+  <p>Ljubimac nije pronađen.</p>
+</div>

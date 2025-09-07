@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Proizvod } from './welcome/proizvod.model';
+import { Ljubimac } from './welcome/ljubimac.model';
 import { ProdavnicaServis } from './welcome/prodavnica.service';
 import { KorpaService } from './korpa/korpa.service';
 import { Router } from '@angular/router';
@@ -45,7 +45,7 @@ export class ChatbotService {
       const rasa = lowerCaseText.replace('pretrazi', '').trim();
       this.searchByRasa(rasa);
     } 
-    else if (this.prodavnicaServis.getProizvod().some(p => p.rasa.toLowerCase() === lowerCaseText)) {
+    else if (this.prodavnicaServis.getLjubimac().some(p => p.rasa.toLowerCase() === lowerCaseText)) {
         this.searchByRasa(lowerCaseText);
     }
     else if (lowerCaseText === 'pretraga') {
@@ -56,31 +56,31 @@ export class ChatbotService {
   }
 
   private searchByRasa(rasa: string): void {
-    const sviProizvodi = this.prodavnicaServis.getProizvod();
-    const pronadjeniLjubimac = sviProizvodi.find(p => p.rasa.toLowerCase() === rasa);
+    const sviLjubimci = this.prodavnicaServis.getLjubimac();
+    const pronadjeniLjubimac = sviLjubimci.find(p => p.rasa.toLowerCase() === rasa);
 
     if (pronadjeniLjubimac) {
       this.addBotMessage(
         `Pronašao sam ljubimca rase ${pronadjeniLjubimac.rasa}. ` +
-        `Sada te prebacujem na stranicu sa detaljima.`
+        `Prebacujem na stranicu sa detaljima.`
       );
       
       this.router.navigate(['/detalji', pronadjeniLjubimac.id]);
 
     } else {
-      this.addBotMessage(`Žao mi je, nisam pronašao ljubimca rase "${rasa}".`);
+      this.addBotMessage(`Žao mi je, nisam pronašao ljubimca rase "${rasa}". :()`);
     }
   }
 
-  onAddToCart(proizvod: Proizvod): void {
+  onAddToCart(ljubimac: Ljubimac): void {
     this.korpaService.addToCart({
-      id: proizvod.id,
-      slika: proizvod.slika,
-      ime: proizvod.ime,
-      rasa: proizvod.rasa,
-      velicina: proizvod.velicina,
-      godiste: proizvod.godiste,
-      cena: proizvod.cena,
+      id: ljubimac.id,
+      slika: ljubimac.slika,
+      ime: ljubimac.ime,
+      rasa: ljubimac.rasa,
+      velicina: ljubimac.velicina,
+      godiste: ljubimac.godiste,
+      cena: ljubimac.cena,
       kolicina: 1
     });
   }

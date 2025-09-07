@@ -1,11 +1,9 @@
-// src/app/welcome/prodavnica.service.ts
-
 import { Injectable } from "@angular/core";
-import { Proizvod } from "./proizvod.model";
+import { Ljubimac } from "./ljubimac.model";
 
 @Injectable()
 export class ProdavnicaServis {
-    private proizvod: Proizvod[] = [
+    private ljubimac: Ljubimac[] = [
         {
             id: 1,
             ime: "Bobi",
@@ -247,7 +245,7 @@ export class ProdavnicaServis {
             opis: "Persijske mačke su poznate po svom dugom krznu i mirnoj naravi. Vole da se maze i savršene su za miran porodični život. Životni vek im je između 12 i 15 godina."
         }
     ];
-    getProizvod() {
-        return this.proizvod;
+    getLjubimac() {
+        return this.ljubimac;
     }
 }

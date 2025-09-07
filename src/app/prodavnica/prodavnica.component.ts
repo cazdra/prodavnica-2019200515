@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Proizvod } from '../welcome/proizvod.model';
+import { Ljubimac } from '../welcome/ljubimac.model';
 import { KorpaService } from '../korpa/korpa.service';
+
+//
 
 @Component({
   selector: 'app-prodavnica',
